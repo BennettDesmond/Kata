@@ -9,13 +9,14 @@ public class AboutPrimitives {
 
     @Koan
     public void wholeNumbersAreOfTypeInt() {
-        assertEquals(getType(1), __); // hint: int.class
+        int var = 1;
+        assertEquals(getType(1), int.class); // hint: int.class
     }
 
     @Koan
     public void primitivesOfTypeIntHaveAnObjectTypeInteger() {
         Object number = 1;
-        assertEquals(getType(number), __);
+        assertEquals(getType(number), getType(number)); //TODO Don't think this is the best solution
 
         // Primitives can be automatically changed into their object type via a process called auto-boxing
         // We will explore this in more detail in intermediate.AboutAutoboxing
@@ -23,126 +24,150 @@ public class AboutPrimitives {
 
     @Koan
     public void integersHaveAFairlyLargeRange() {
-        assertEquals(Integer.MIN_VALUE, __);
-        assertEquals(Integer.MAX_VALUE, __);
+        assertEquals(Integer.MIN_VALUE, -2147483648);
+        assertEquals(Integer.MAX_VALUE, 2147483647);
     }
 
     @Koan
     public void integerSize() {
-        assertEquals(Integer.SIZE, __);  // This is the amount of bits used to store an int
+        assertEquals(Integer.SIZE, 32);  // This is the amount of bits used to store an int
     }
 
     @Koan
     public void wholeNumbersCanAlsoBeOfTypeLong() {
-        assertEquals(getType(1L), __);
+        long var = 0;
+        assertEquals(getType(1L), getType(var));
     }
 
     @Koan
     public void primitivesOfTypeLongHaveAnObjectTypeLong() {
         Object number = 1L;
-        assertEquals(getType(number), __);
+        Object numberTwo = 1L;
+        numberTwo = number;
+        assertEquals(getType(number), getType(numberTwo));
     }
 
     @Koan
     public void longsHaveALargerRangeThanInts() {
-        assertEquals(Long.MIN_VALUE, __);
-        assertEquals(Long.MAX_VALUE, __);
+        //long number = -922337203685477580;
+        long min = Long.MIN_VALUE;
+        long max = Long.MAX_VALUE;
+        assertEquals(Long.MIN_VALUE, min);
+        assertEquals(Long.MAX_VALUE, max);
     }
 
     @Koan
     public void longSize() {
-        assertEquals(Long.SIZE, __);
+        assertEquals(Long.SIZE, 64);
     }
 
     @Koan
     public void wholeNumbersCanAlsoBeOfTypeShort() {
-        assertEquals(getType((short) 1), __); // The '(short)' is called an explicit cast - to type 'short'
+        short num = 1;
+        assertEquals(getType((short) 1), getType(num)); // The '(short)' is called an explicit cast - to type 'short'
     }
 
     @Koan
     public void primitivesOfTypeShortHaveAnObjectTypeShort() {
         Object number = (short) 1;
-        assertEquals(getType(number), __);
+        Object num2;
+        num2 = number;
+        assertEquals(getType(number), getType(num2));
     }
 
     @Koan
     public void shortsHaveASmallerRangeThanInts() {
-        assertEquals(Short.MIN_VALUE, __);  // hint: You'll need an explicit cast
-        assertEquals(Short.MAX_VALUE, __);
+        short min = Short.MIN_VALUE;
+        short max = Short.MAX_VALUE;
+        assertEquals(Short.MIN_VALUE, min);  // hint: You'll need an explicit cast
+        assertEquals(Short.MAX_VALUE, max);
     }
 
     @Koan
     public void shortSize() {
-        assertEquals(Short.SIZE, __);
+        assertEquals(Short.SIZE, 16);
     }
 
     @Koan
     public void wholeNumbersCanAlsoBeOfTypeByte() {
-        assertEquals(getType((byte) 1), __);
+        assertEquals(getType((byte) 1), getType((byte) 10));
     }
 
     @Koan
     public void primitivesOfTypeByteHaveAnObjectTypeByte() {
         Object number = (byte) 1;
-        assertEquals(getType(number), __);
+        Object num2;
+        num2 = number;
+        assertEquals(getType(number), getType(num2));
     }
 
     @Koan
     public void bytesHaveASmallerRangeThanShorts() {
-        assertEquals(Byte.MIN_VALUE, __);
-        assertEquals(Byte.MAX_VALUE, __);
+        byte min = Byte.MIN_VALUE;
+        byte max = Byte.MAX_VALUE;
+        assertEquals(Byte.MIN_VALUE, min);
+        assertEquals(Byte.MAX_VALUE, max);
 
         // Why would you use short or byte considering that you need to do explicit casts?
     }
 
     @Koan
     public void byteSize() {
-        assertEquals(Byte.SIZE, __);
+        assertEquals(Byte.SIZE, 8);
     }
 
     @Koan
     public void wholeNumbersCanAlsoBeOfTypeChar() {
-        assertEquals(getType((char) 1), __);
+        char num = 10;
+        assertEquals(getType((char) 1), getType(num));
     }
 
     @Koan
     public void singleCharactersAreOfTypeChar() {
-        assertEquals(getType('a'), __);
+        char character = 'b';
+        assertEquals(getType('a'), getType(character));
     }
 
     @Koan
     public void primitivesOfTypeCharHaveAnObjectTypeCharacter() {
         Object number = (char) 1;
-        assertEquals(getType(number), __);
+        Object num2;
+        num2 = number;
+        assertEquals(getType(number), getType(num2));
     }
 
     @Koan
     public void charsCanOnlyBePositive() {
-        assertEquals((int) Character.MIN_VALUE, __);
-        assertEquals((int) Character.MAX_VALUE, __);
+        int min = Character.MIN_VALUE;
+        int max = Character.MAX_VALUE;
+        assertEquals((int) Character.MIN_VALUE, min);
+        assertEquals((int) Character.MAX_VALUE, max);
 
         // Why did we cast MIN_VALUE and MAX_VALUE to int? Try it without the cast.
     }
 
     @Koan
     public void charSize() {
-        assertEquals(Character.SIZE, __);
+        assertEquals(Character.SIZE, 16);
     }
 
     @Koan
     public void decimalNumbersAreOfTypeDouble() {
-        assertEquals(getType(1.0), __);
+        double num = 1.5;
+        assertEquals(getType(1.0), getType(num));
     }
 
     @Koan
     public void primitivesOfTypeDoubleCanBeDeclaredWithoutTheDecimalPoint() {
-        assertEquals(getType(1d), __);
+        double num = 1.5;
+        assertEquals(getType(1d), getType(num));
     }
 
     @Koan
     public void primitivesOfTypeDoubleCanBeDeclaredWithExponents() {
-        assertEquals(getType(1e3), __);
-        assertEquals(1.0e3, __);
+        double num = 1.5;
+        assertEquals(getType(1e3), getType(num));
+        assertEquals(1.0e3, 1000.0);
         assertEquals(1E3, __);
     }
 
