@@ -91,11 +91,11 @@ public class AboutExceptions {
     public void returnInFinallyBlock() {
         StringBuilder whatHappened = new StringBuilder();
         StringBuilder value = new StringBuilder();
-        value.append("try, catch, finall");
+        value.append("try, catch, finally");
         // Which value will be returned here?
         String val = "try, catch, finally";
         assertEquals(returnStatementsEverywhere(whatHappened), "from finally");
-        assertEquals(whatHappened.toString(), whatHappened.toString());
+        assertEquals(whatHappened.toString(), value.toString());
     }
 
     private void doUncheckedStuff() {
@@ -105,7 +105,11 @@ public class AboutExceptions {
     @Koan
     public void catchUncheckedExceptions() {
         // What do you need to do to catch the unchecked exception?
-        doUncheckedStuff();
+        try {
+            doUncheckedStuff();
+        } catch(RuntimeException e) {
+            //Exception caught
+        }
     }
 
     @SuppressWarnings("serial")
@@ -130,7 +134,7 @@ public class AboutExceptions {
         } catch (ParentException e) {
             s = "ParentException";
         }
-        assertEquals(s, __);
+        assertEquals(s, "ChildException");
     }
 
     @Koan
@@ -142,7 +146,7 @@ public class AboutExceptions {
         } catch (IllegalArgumentException ex) {
             s = "caught an IllegalArgumentException";
         }
-        assertEquals(s, __);
+        assertEquals(s, "caught an IllegalArgumentException");
     }
 
     @Koan
@@ -154,7 +158,7 @@ public class AboutExceptions {
         } catch (IllegalArgumentException ex) {
             s = "caught an IllegalArgumentException";
         }
-        assertEquals(s, __);
+        assertEquals(s, "5");
     }
 
     private int validateUsingIllegalArgumentException(String str) {
