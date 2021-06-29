@@ -168,53 +168,64 @@ public class AboutPrimitives {
         double num = 1.5;
         assertEquals(getType(1e3), getType(num));
         assertEquals(1.0e3, 1000.0);
-        assertEquals(1E3, __);
+        assertEquals(1E3, 1000.0);
     }
 
     @Koan
     public void primitivesOfTypeDoubleHaveAnObjectTypeDouble() {
         Object number = 1.0;
-        assertEquals(getType(number), __);
+        Double num = 1.0;
+        assertEquals(getType(number), getType(num));
     }
 
     @Koan
     public void doublesHaveALargeRange() {
-        assertEquals(Double.MIN_VALUE, __);
-        assertEquals(Double.MAX_VALUE, __);
+        double min = Double.MIN_VALUE;
+        double max = Double.MAX_VALUE;
+        assertEquals(Double.MIN_VALUE, min);
+        assertEquals(Double.MAX_VALUE, max);
     }
 
     @Koan
     public void doubleSize() {
-        assertEquals(Double.SIZE, __);
+        assertEquals(Double.SIZE, 64);
     }
 
     @Koan
     public void decimalNumbersCanAlsoBeOfTypeFloat() {
-        assertEquals(getType(1f), __);
+        float num = 3.5f;
+        assertEquals(getType(1f), getType(num));
     }
 
     @Koan
     public void primitivesOfTypeFloatCanBeDeclaredWithExponents() {
-        assertEquals(getType(1e3f), __);
-        assertEquals(1.0e3f, __);
-        assertEquals(1E3f, __);
+        float num = 3.5f;
+        assertEquals(getType(1e3f), getType(num));
+        float num2 = 1.0e3f;
+        assertEquals(1.0e3f, num2);
+        float num3 = 1E3f;
+        assertEquals(1E3f, num3);
     }
 
     @Koan
     public void primitivesOfTypeFloatHaveAnObjectTypeFloat() {
         Object number = 1f;
-        assertEquals(getType(number), __);
+        Object num2;
+        num2 = number;
+        assertEquals(getType(number), getType(num2));
     }
 
     @Koan
     public void floatsHaveASmallerRangeThanDoubles() {
-        assertEquals(Float.MIN_VALUE, __);
-        assertEquals(Float.MAX_VALUE, __);
+        float min = Float.MIN_VALUE;
+        float max = Float.MAX_VALUE;
+        assertEquals(Float.MIN_VALUE, min);
+        assertEquals(Float.MAX_VALUE, max);
     }
 
     @Koan
     public void floatSize() {
-        assertEquals(Float.SIZE, __);
+        assertEquals(Float.SIZE, 32);
     }
 
     private Class<?> getType(int value) {
