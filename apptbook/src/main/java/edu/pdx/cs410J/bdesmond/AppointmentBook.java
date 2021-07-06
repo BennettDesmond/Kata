@@ -27,7 +27,7 @@ public class AppointmentBook extends AbstractAppointmentBook {
     }
 
     @Override
-    public Collection<AbstractAppointment> getAppointments() {
+    public Collection<Appointment> getAppointments() {
         throw new UnsupportedOperationException("This method is not implemented yet");
     }
 

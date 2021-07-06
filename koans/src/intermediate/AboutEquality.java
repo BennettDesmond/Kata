@@ -46,9 +46,9 @@ public class AboutEquality {
             if(!this.name.equals(carObj.name)) {
                 return false;
             }
-            //if(this.horsepower != carObj.horsepower) {
-                //return false;
-            //}
+            if(this.horsepower != carObj.horsepower) {
+                return false;
+            }
             return true;
         }
 
