@@ -13,7 +13,13 @@ public class AppointmentBook extends AbstractAppointmentBook {
     public AppointmentBook() {
         super();
         owner = null;
-        appointments = null;
+        appointments = new LinkedList<Appointment>();
+    }
+
+    public AppointmentBook(String owner) {
+        super();
+        this.owner = owner;
+        appointments = new LinkedList<Appointment>();
     }
 
     public AppointmentBook(String owner, Collection<Appointment> appointments) {
@@ -34,6 +40,6 @@ public class AppointmentBook extends AbstractAppointmentBook {
 
     @Override
     public void addAppointment(AbstractAppointment abstractAppointment) {
-
+        appointments.add((Appointment) abstractAppointment);
     }
 }

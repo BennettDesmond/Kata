@@ -43,7 +43,19 @@ public class AppointmentBookTest {
     @Test
     void getAppointmentsTestWithNullValue() {
         AppointmentBook appointmentBook = new AppointmentBook();
-        assertThat(appointmentBook.getAppointments(), equalTo(null));
+        LinkedList<Appointment> appointments = new LinkedList<Appointment>();
+        assertThat(appointmentBook.getAppointments(), equalTo(appointments));
+    }
+
+    @Test
+    void addAppointmentTestWithNewAppointment() {
+        Appointment appointment = new Appointment("7/15/202112:00","7/15/202113:00","Meeting with Bernice");
+        LinkedList<Appointment> appointments = new LinkedList<Appointment>();
+        appointments.add(appointment);
+        AppointmentBook appointmentBook = new AppointmentBook("Jake",appointments);
+        AppointmentBook otherAppointmentBook = new AppointmentBook();
+        otherAppointmentBook.addAppointment(appointment);
+        assertThat(appointmentBook.getAppointments(), equalTo(otherAppointmentBook.getAppointments()));
     }
 
 }
