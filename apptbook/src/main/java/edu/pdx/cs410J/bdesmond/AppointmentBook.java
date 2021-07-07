@@ -4,31 +4,32 @@ import edu.pdx.cs410J.AbstractAppointment;
 import edu.pdx.cs410J.AbstractAppointmentBook;
 
 import java.util.Collection;
+import java.util.LinkedList;
 
 public class AppointmentBook extends AbstractAppointmentBook {
     private String owner;
-    private Appointment[] appointments;
+    private LinkedList<Appointment> appointments;
 
     public AppointmentBook() {
         super();
-        owner = "";
-        appointments = new Appointment[10]; //This number will most likely change
+        owner = null;
+        appointments = null;
     }
 
-    public AppointmentBook(String owner, Appointment[] appointments) {
+    public AppointmentBook(String owner, Collection<Appointment> appointments) {
         super();
         this.owner = owner;
-        //I believe I will need a function to copy over the data to the new array.
-        this.appointments = appointments;
+        this.appointments = (LinkedList) appointments;
     }
+
     @Override
     public String getOwnerName() {
-        throw new UnsupportedOperationException("This method is not implemented yet");
+        return owner;
     }
 
     @Override
     public Collection<Appointment> getAppointments() {
-        throw new UnsupportedOperationException("This method is not implemented yet");
+        return appointments;
     }
 
     @Override
