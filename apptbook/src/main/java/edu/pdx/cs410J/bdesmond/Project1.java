@@ -29,11 +29,20 @@ public class Project1 {
     String endDate = null;
     String endTime = null;
     String end = null;
+    int numOfOptions = 0;
+    boolean printFlag = false;
     //AppointmentBook appointmentBook = new AppointmentBook();
     //Appointment appointment = new Appointment();  // Refer to one of Dave's classes so that we can be sure it is on the classpath
+    if((args[0] == "-README") || (args[0] == "-print")) {
+      numOfOptions++;
+    }
+    if((args[1] == "-README") || (args[1] == "-print")) {
+      numOfOptions++;
+    }
+    printFlag = optionCheck(args);
     if(args.length == 0) {
       printErrorAndExit(USAGE_MESSAGE);
-    } else if(args.length > 6) {
+    } else if(args.length > (6+numOfOptions)) {
       System.err.println("Too many arguments");
       printErrorAndExit(USAGE_MESSAGE);
     }
@@ -59,6 +68,9 @@ public class Project1 {
     AppointmentBook appointmentBook = new AppointmentBook(name);
     appointmentBook.addAppointment(appointment);
     System.out.println(appointmentBook);
+    if(printFlag) {
+      System.out.println(appointmentBook.getAppointments());
+    }
 
     System.exit(0);
   }
@@ -114,6 +126,27 @@ public class Project1 {
     if(!validateTime(time)) {
       printErrorAndExit(INCORRECT_TIME_FORMAT);
     }
+  }
+
+  private static boolean optionCheck(String[] args) {
+    if((args[0] == "-README") || (args[1] == "-README")) {
+      readMe();
+    }
+    if((args[0] == "-print") || (args[1] == "-print")) {
+      readMe();
+    }
+    return true;
+  }
+
+  private static void readMe() {
+    System.out.println("Bennett Desmond\n");
+    System.out.println("Project 1\n");
+    System.out.println("This program accepts parameters at the command line and makes" +
+            "an appointment book and an appointment. This program only accepts one appointment" +
+            "All parameters must be present for the project to run. The appointment book has" +
+            "a name and an array of appointments, and the appointments have a description, a start time" +
+            "and an end time.\n");
+    System.exit(0);
   }
 
 }

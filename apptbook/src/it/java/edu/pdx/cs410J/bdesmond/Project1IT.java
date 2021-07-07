@@ -31,15 +31,21 @@ class Project1IT extends InvokeMainTestCase {
     assertThat(result.getExitCode(), equalTo(1));
   }
 
+  /**
+   * Tests that no errors happen and correct output happens when correct input occurs
+   */
   @Test
   void testWithAllCorrectValues() {
-    MainMethodResult result = invokeMain("John","Meeting with Bernice","7/15/2021","12:00","7/15/2021","13:00");
+    MainMethodResult result = invokeMain("John","Meeting with Bernice","07/15/2021","12:00","07/15/2021","13:00");
     assertThat(result.getTextWrittenToStandardError(), emptyString());
     String message = "John's appointment book with 1 appointments\n";
     assertThat(result.getTextWrittenToStandardOut(), equalTo(message));
     assertThat(result.getExitCode(), equalTo(0));
   }
 
+  /**
+   * Tests that invoking the main method with no arguments issues an error
+   */
   @Test
   void missingDescription() {
     MainMethodResult result = invokeMain("John");
@@ -95,6 +101,15 @@ class Project1IT extends InvokeMainTestCase {
     MainMethodResult result = invokeMain("John","This is an event","02/13/2000","1439","03/13/2000","23:45");
     assertThat(result.getTextWrittenToStandardError(), containsString("Incorrect Time format"));
     assertThat(result.getExitCode(), equalTo(1));
+  }
+
+  @Test
+  void testingDateFormatWithSingleDigitDay() {
+    MainMethodResult result = invokeMain("John","Meeting with Bernice","7/15/2021","12:00","7/15/2021","13:00");
+    assertThat(result.getTextWrittenToStandardError(), emptyString());
+    String message = "John's appointment book with 1 appointments\n";
+    assertThat(result.getTextWrittenToStandardOut(), equalTo(message));
+    assertThat(result.getExitCode(), equalTo(0));
   }
 
 }
