@@ -112,4 +112,28 @@ class Project1IT extends InvokeMainTestCase {
     assertThat(result.getExitCode(), equalTo(0));
   }
 
+  @Test
+  void readMeTest() {
+    MainMethodResult result = invokeMain("-README");
+    assertThat(result.getTextWrittenToStandardOut(), containsString("Bennett Desmond"));
+    assertThat(result.getExitCode(), equalTo(0));
+  }
+
+  @Test
+  void testWithPrintOptionSpecified() {
+    MainMethodResult result = invokeMain("-print","John","Meeting with Bernice","07/15/2021","12:00","07/15/2021","13:00");
+    assertThat(result.getTextWrittenToStandardError(), emptyString());
+    String message = "Meeting with Bernice";
+    assertThat(result.getTextWrittenToStandardOut(), containsString(message));
+    assertThat(result.getExitCode(), equalTo(0));
+  }
+
+  @Test
+  void testProgramResponseToTwoOptions() {
+    MainMethodResult result = invokeMain("-print","-README","John","Meeting with Bernice","07/15/2021","12:00","07/15/2021","13:00");
+    assertThat(result.getTextWrittenToStandardError(), emptyString());
+    assertThat(result.getTextWrittenToStandardOut(), containsString("Bennett Desmond"));
+    assertThat(result.getExitCode(), equalTo(0));
+  }
+
 }
