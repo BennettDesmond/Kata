@@ -15,10 +15,28 @@ public class Kata {
   }
 
   public static String compute(String str) {
-    String returnStr = str;
+    String returnStr = "";
+
+    // When divisible by 3 add "Foo"
     if((Integer.parseInt(str) % 3) == 0) {
-      returnStr = "Foo";
+      returnStr += "Foo";
     }
+
+    // When divisible by 5 add "Bar"
+    if((Integer.parseInt(str) % 5) == 0) {
+      returnStr += "Bar";
+    }
+
+    // When divisible by 7 add "Qix"
+    if((Integer.parseInt(str) % 7) == 0) {
+      returnStr += "Qix";
+    }
+
+    // If no substitutions where made, then just return the initial string.
+    if(returnStr == "") {
+      returnStr = str;
+    }
+
     return returnStr;
   }
 }
