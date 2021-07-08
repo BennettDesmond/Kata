@@ -41,4 +41,29 @@ public class KataTest
     assertThat(Kata.compute("105"), containsString("Qix"));
   }
 
+  @Test
+  void containsThree() {
+    assertThat(Kata.compute("23"), containsString("Foo"));
+    assertThat(Kata.compute("43"), containsString("Foo"));
+    assertThat(Kata.compute("53"), containsString("Foo"));
+    assertThat(Kata.compute("73"), containsString("Foo"));
+    assertThat(Kata.compute("133"), containsString("Foo"));
+  }
+
+  @Test
+  void containsFive() {
+    assertThat(Kata.compute("5"), containsString("Bar"));
+    assertThat(Kata.compute("15"), containsString("Bar"));
+    assertThat(Kata.compute("35"), containsString("Bar"));
+    assertThat(Kata.compute("55"), containsString("Bar"));
+  }
+  @Test
+  void containsSeven() {
+    assertThat(Kata.compute("71"), containsString("Qix"));
+    assertThat(Kata.compute("17"), containsString("Qix"));
+    assertThat(Kata.compute("27"), containsString("Qix"));
+    assertThat(Kata.compute("75"), containsString("Qix"));
+    assertThat(Kata.compute("177"), containsString("Qix"));
+  }
+
 }

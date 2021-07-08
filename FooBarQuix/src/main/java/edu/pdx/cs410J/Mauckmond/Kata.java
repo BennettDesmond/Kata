@@ -37,6 +37,17 @@ public class Kata {
       returnStr = str;
     }
 
+    //Check to see if the string contains 3, 5, or 7
+    for(int i = 0; i < str.length(); i++) {
+      if(str.charAt(i) == '3') {
+        returnStr += "Foo";
+      } else if(str.charAt(i) == '5') {
+        returnStr += "Bar";
+      } else if(str.charAt(i) == '7') {
+        returnStr += "Qix";
+      }
+    }
+
     return returnStr;
   }
 }
