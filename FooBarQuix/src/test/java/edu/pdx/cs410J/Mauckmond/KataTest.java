@@ -1,6 +1,7 @@
 package edu.pdx.cs410J.Mauckmond;
 
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.*;
@@ -42,7 +43,7 @@ public class KataTest
   }
 
   @Test
-  void containsThree() {
+  void containsButIsNotDivisibleByThree() {
     assertThat(Kata.compute("23"), containsString("Foo"));
     assertThat(Kata.compute("43"), containsString("Foo"));
     assertThat(Kata.compute("53"), containsString("Foo"));
@@ -57,8 +58,9 @@ public class KataTest
     assertThat(Kata.compute("35"), containsString("Bar"));
     assertThat(Kata.compute("55"), containsString("Bar"));
   }
+
   @Test
-  void containsSeven() {
+  void containsButIsNotDivisibleBySeven() {
     assertThat(Kata.compute("71"), containsString("Qix"));
     assertThat(Kata.compute("17"), containsString("Qix"));
     assertThat(Kata.compute("27"), containsString("Qix"));
@@ -66,4 +68,10 @@ public class KataTest
     assertThat(Kata.compute("177"), containsString("Qix"));
   }
 
+  @Test
+  void checkComputeResultsOrder() {
+    assertEquals("Foo", Kata.compute("6"));
+    assertEquals("Bar", Kata.compute("10"));
+    assertEquals("Qix", Kata.compute("14"));
+  }
 }
